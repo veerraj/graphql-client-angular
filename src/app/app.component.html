@@ -1,0 +1,42 @@
+<div class="container-fluid p-10 m-5 ">
+  <form [formGroup]="myform" (ngSubmit)="savePodcast()">
+    <div class="form-group row">
+      <label for="Name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="Name" formControlName="name" placeholder="name">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="Url" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="Url" placeholder="Url"
+        formControlName="url">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Save</button>
+  </form>
+
+<h3 class="ml-">Podcast List</h3>
+<table class="table table-striped mt-2" style="width: 80%;">
+  <thead>
+    <!-- <th>PodCast List</th> -->
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Url</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of podcasts;let i=index">
+      <th scope="row">{{ i+1 }} </th>
+      <td>{{ item?.name }}</td>
+      <td>{{ item?.url }}</td>
+      <td style="cursor: pointer;"><i class="fa fa-trash" aria-hidden="true"
+        (click)="deletePodcast(item,i)"></i>
+        <i class="fa fa-pencil ml-4" aria-hidden="true"
+         (click)="editPodcast(item)"></i></td>
+    </tr>
+  </tbody>
+</table>
+</div>
